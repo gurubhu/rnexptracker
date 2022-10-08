@@ -1,0 +1,41 @@
+1. npx expo-cli init track-client --npm
+2. npm install react-navigation --legacy-peer-deps
+3. expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+4. npm install react-navigation-stack @react-native-community/masked-view --legacy-peer-deps
+5. npm install react-navigation-tabs --legacy-peer-deps
+
+6.Find the babel.config.js file and add the following line to the return:
+
+    plugins: ["react-native-reanimated/plugin"],
+
+7. start the app with expo r -c
+
+Important Message about React Navigation v5
+---------------------------------------------------
+
+This project will be using the v4 version of React Navigation and not 
+the v5 version. To date, this code still works as expected. The v4 version 
+is still important to know and understand as it is used widely in existing codebases in many organizations. 
+I highly encourage you to continue on with the course as it is so that you fully understand how React Navigation works. 
+Once you have finished the course, you can use this as a self-study opportunity to attempt a migration of your 
+finished working projects to v5. The docs provide some great resources on this: 
+https://reactnavigation.org/docs/upgrading-from-4.x/. 
+
+
+8. npm install @rneui/themed @rneui/base(react-native-elements)
+
+9. navigationOptions Deprecation Warning     
+
+SignupScreen.navigationOptions = () => {
+      return {
+        headerShown: false,
+      };
+    };
+
+Async Storage Update
+----------------------------
+1. npm install @react-native-async-storage/async-storage
+
+Then update the import as :
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
