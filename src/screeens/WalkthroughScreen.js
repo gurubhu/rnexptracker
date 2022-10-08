@@ -4,14 +4,14 @@ import {
     Text
 } from 'react-native';
 
-const Walkthrough = () => {
+const WalkthroughScreen = () => {
     return (
         <View>
             <Text>
-                Walkthrough
+            WalkthroughScreen
              </Text>
         </View>
     )
 }
 
-export default Walkthrough;
+export default WalkthroughScreen;
