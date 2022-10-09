@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useRef } from 'react';
 import {
     View,
     Animated,
@@ -8,6 +8,9 @@ import {
 
 import Footer from '../components/Footer';
 import FirstWalkThroughScreen from './FirstWalkThroughScreen';
+import SecondWalkThroughScreen from './SecondWalkThroughScreen';
+import ThirdWalkThroughScreen from './ThirdWalkThroughScreen';
+import FourthWalkThroughScreen from './FourthWalkThroughScreen';
 
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
@@ -15,10 +18,11 @@ import FONTS from '../constants/FONTS';
 import constants from '../constants/constants';
 
 
+
 const WalkthroughScreen = () => {
 
     const scrollX = React.useRef(new Animated.Value(0)).current;
-
+    
     return (
         <View style={styles.container}>
             <Animated.FlatList 
@@ -42,6 +46,9 @@ const WalkthroughScreen = () => {
                             {/* Walkthrough Images  */}
                             <View style={styles.imageContainer}>
                                 { index === 0 && <FirstWalkThroughScreen />}
+                                { index === 1 && <SecondWalkThroughScreen />}
+                                { index === 2 && <ThirdWalkThroughScreen />}
+                                { index === 3 && <FourthWalkThroughScreen />}
                             </View>
                             {/* Title And Description */}
                             <View style={styles.titleContainer}>
