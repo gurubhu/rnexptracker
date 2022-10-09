@@ -6,46 +6,18 @@ import {
     Text
 } from 'react-native';
 
-import TextButton from '../components/TextButton';
 import Footer from '../components/Footer';
+import FirstWalkThroughScreen from './FirstWalkThroughScreen';
 
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 import FONTS from '../constants/FONTS';
 import constants from '../constants/constants';
-import FirstWalkThroughScreen from './FirstWalkThroughScreen';
+
 
 const WalkthroughScreen = () => {
 
     const scrollX = React.useRef(new Animated.Value(0)).current;
-
-    const Dots = ()=>{
-
-        const dotPosition = Animated.divide(scrollX, SIZES.width);
-                
-        return (
-           <View style={styles.dotContainer}>
-               {
-                   constants.walkthrough.map((item, index)=>{
-
-                       const dotColor = dotPosition.interpolate({
-                           inputRange : [index -1, index, index + 1],
-                           outputRange : [COLORS.dark08, COLORS.primary, COLORS.dark08],
-                           extrapolate : "clamp"
-                       })
-                       
-                       
-                       return (
-                           <Animated.View 
-                                key={`dot-${index}`}
-                                style={{...styles.dots, backgroundColor: dotColor}}
-                           />
-                       )
-                   })
-               }
-           </View> 
-        )
-    }
 
     return (
         <View style={styles.container}>
@@ -80,7 +52,7 @@ const WalkthroughScreen = () => {
                     )
                 }}
             />
-            <Footer Dots={Dots}/>
+            <Footer scrollX={scrollX}/>
         </View>
     )
 }
@@ -89,17 +61,6 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         backgroundColor : COLORS.light
-    },
-    dotContainer:{
-        flexDirection : 'row',
-        alignItems : 'center',
-        justifyContent : 'center'
-    },
-    dots :{
-        borderRadius : 5,
-        marginHorizontal : 6,
-        width : 10,
-        height : 10
     },
     subTitle:{
         marginTop: SIZES.radius,

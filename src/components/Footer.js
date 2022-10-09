@@ -1,20 +1,25 @@
 import React from 'react';
 import {
     StyleSheet,
-    View
+    View,
+    Animated
 } from 'react-native';
 
 import TextButton from './TextButton';
+import Dots from './Dots';
 
 import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 
 
-const Footer = ({ Dots })=>{
+const Footer = ({ scrollX })=>{
+
+    const dotPosition = Animated.divide(scrollX, SIZES.width);
+
     return (
         <View style={styles.footerContainer}>
-            <Dots />
+            <Dots dotPosition={dotPosition}/>
             {/* Buttons  */}
             <View style={styles.buttonsContainer}>
                 <TextButton 
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
      buttonsContainer :{
         flexDirection : 'row',
         height : 55
-    },
+    }
 });
 
 export default Footer;
