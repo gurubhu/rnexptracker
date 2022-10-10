@@ -19,7 +19,7 @@ import constants from '../constants/constants';
 
 
 
-const WalkthroughScreen = () => {
+const WalkthroughScreen = ({ navigation }) => {
 
     const scrollX = React.useRef(new Animated.Value(0)).current;
     
@@ -59,7 +59,7 @@ const WalkthroughScreen = () => {
                     )
                 }}
             />
-            <Footer scrollX={scrollX}/>
+            <Footer scrollX={scrollX} navigation={navigation}/>
         </View>
     )
 }

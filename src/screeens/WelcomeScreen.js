@@ -50,7 +50,7 @@ const WelcomeScreen = ({ navigation }) => {
                     labelStyle={{
                         color: COLORS.primary
                     }}
-                    onPress={() => navigation.navigate("Signin")}
+                    onPress={() => navigation.navigate("AuthMain")}
                 />
             </View>
         </View>

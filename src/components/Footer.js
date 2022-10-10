@@ -13,7 +13,7 @@ import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 
 
-const Footer = ({ scrollX })=>{
+const Footer = ({ navigation, scrollX })=>{
 
     const dotPosition = Animated.divide(scrollX, SIZES.width);
 
@@ -22,8 +22,8 @@ const Footer = ({ scrollX })=>{
             <Dots dotPosition={dotPosition}/>
             {/* Buttons  */}
             <View style={styles.buttonsContainer}>
-                <TextButton 
-                    label="Join Now"
+                {/* <TextButton 
+                    label="Create Account"
                     contentContainerStyle={{
                         flex : 1,
                         borderRadius : SIZES.radius,
@@ -33,9 +33,9 @@ const Footer = ({ scrollX })=>{
                         color : COLORS.primary,
                         ...FONTS.h3
                     }}
-                />
+                /> */}
                 <TextButton 
-                    label="Log In"
+                    label="Join Now"
                     contentContainerStyle={{
                         flex : 1,
                         marginLeft: SIZES.radius,
@@ -45,6 +45,8 @@ const Footer = ({ scrollX })=>{
                     labelStyle={{
                         ...FONTS.h3
                     }}
+
+                    onPress ={()=>navigation.navigate('AuthMain')} //'AuthMain'
                 />
             </View>
         </View>

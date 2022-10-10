@@ -78,6 +78,9 @@ const COLORS = {
     // Shadow
     shadow: 'rgba(138, 149, 158, 1)',
     shadow08: 'rgba(138, 149, 158, 0.08)',
+
+    //white
+    white: 'rgba(138, 149, 158, 1)'
 }
 
 export default COLORS;

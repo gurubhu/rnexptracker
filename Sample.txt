@@ -2,13 +2,15 @@ import React from 'react';
 import {
     TouchableOpacity,
     Text,
-    StyleSheet
+    StyleSheet,
+    View
 } from 'react-native';
 
 import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
 import constants from '../constants/constants';
 import SIZES from '../constants/SIZES';
+import icons from '../constants/icons';
 
 
 const Dots = ()=>{
