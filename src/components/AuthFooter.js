@@ -7,9 +7,9 @@ import {
 
 import TextButton from './TextButton';
 
-import FONTS from '../../constants/FONTS';
-import COLORS from '../../constants/COLORS';
-import SIZES from '../../constants/SIZES';
+import FONTS from '../constants/FONTS';
+import COLORS from '../constants/COLORS';
+import SIZES from '../constants/SIZES';
 
 const AuthFooter = ({ mode, setMode })=>{
     return (

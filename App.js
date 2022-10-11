@@ -64,7 +64,8 @@ let customFonts = {
 const switchNavigator = createSwitchNavigator({
   Welcome : WelcomeScreen,
   Walkthrough: WalkthroughScreen,
-  AuthMain : AuthMainScreen
+  AuthMain : AuthMainScreen,
+  Account: AccountScreen
 })
 
 const App = createAppContainer(switchNavigator);

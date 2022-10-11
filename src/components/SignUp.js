@@ -6,15 +6,15 @@ import {
     Image
 } from 'react-native';
 
-import TextButton from '../../components/TextButton';
-import FormInput from '../../components/FormInput';
-import IconButton from '../../components/IconButton';
-import CheckBox from '../../components/CheckBox';
+import TextButton from './TextButton';
+import FormInput from './FormInput';
+import IconButton from './IconButton';
+import CheckBox from './CheckBox';
 
-import FONTS from '../../constants/FONTS';
-import COLORS from '../../constants/COLORS';
-import SIZES from '../../constants/SIZES';
-import icons from '../../constants/icons';
+import FONTS from '../constants/FONTS';
+import COLORS from '../constants/COLORS';
+import SIZES from '../constants/SIZES';
+import icons from '../constants/icons';
 
 const SignUp = ({
     name, setName, 

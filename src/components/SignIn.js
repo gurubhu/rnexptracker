@@ -6,19 +6,20 @@ import {
     Image
 } from 'react-native';
 
-import TextButton from '../../components/TextButton';
-import FormInput from '../../components/FormInput';
-import IconButton from '../../components/IconButton';
+import TextButton from './TextButton';
+import FormInput from './FormInput';
+import IconButton from './IconButton';
 
-import FONTS from '../../constants/FONTS';
-import COLORS from '../../constants/COLORS';
-import SIZES from '../../constants/SIZES';
-import icons from '../../constants/icons';
+import FONTS from '../constants/FONTS';
+import COLORS from '../constants/COLORS';
+import SIZES from '../constants/SIZES';
+import icons from '../constants/icons';
 
 const SignIn = ({
     email, setEmail, 
     password, setPassword, 
-    isPasswordVisible, setIsPasswordVisible
+    isPasswordVisible, setIsPasswordVisible,
+    navigation
 })=>{
 
     return(
@@ -76,7 +77,7 @@ const SignIn = ({
                     label="Log In"
                     contentContainerStyle={styles.loginContainerStyle}
                     labelStyle={styles.loginLabelStyle}
-                    onPress={()=> console.log("Log in")}
+                    onPress={()=> navigation.navigate('Account')}
                 />
             </View>
             

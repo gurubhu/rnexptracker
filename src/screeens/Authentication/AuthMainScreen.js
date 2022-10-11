@@ -13,7 +13,7 @@ import COLORS from '../../constants/COLORS';
 import SIZES from '../../constants/SIZES';
 
 
-const AuthMainScreen = ()=>{
+const AuthMainScreen = ({ navigation })=>{
 
     const [mode, setMode] = React.useState("signIn")
     const [email, setEmail] = React.useState("")
@@ -42,6 +42,7 @@ const AuthMainScreen = ()=>{
                         email={email} setEmail={setEmail} 
                         password={password} setPassword = {setPassword} 
                         isPasswordVisible={isPasswordVisible} setIsPasswordVisible={setIsPasswordVisible}
+                        navigation={navigation}
                     />
                     : 
                     <SignUp 
@@ -52,6 +53,7 @@ const AuthMainScreen = ()=>{
                         confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword}
                         isConfirmPasswordVisible={isConfirmPasswordVisible} setIsConfirmPasswordVisible={setIsConfirmPasswordVisible}
                         termsChecked={termsChecked} setTermsChecked={setTermsChecked}
+                        navigation={navigation}
                     />
                 }
             </View>
