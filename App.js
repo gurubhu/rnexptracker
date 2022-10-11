@@ -15,7 +15,7 @@ import ResolveAuthScreen from './src/screeens/ResolveAuthScreen';
 
 import WelcomeScreen from './src/screeens/WelcomeScreen';
 import WalkthroughScreen from './src/screeens/WalkthroughScreen';
-import AuthMain from './src/screeens/Authentication/AuthMain';
+import AuthMainScreen from './src/screeens/Authentication/AuthMainScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
@@ -64,8 +64,7 @@ let customFonts = {
 const switchNavigator = createSwitchNavigator({
   Welcome : WelcomeScreen,
   Walkthrough: WalkthroughScreen,
-  Signin : SigninScreen,
-  AuthMain : AuthMain
+  AuthMain : AuthMainScreen
 })
 
 const App = createAppContainer(switchNavigator);

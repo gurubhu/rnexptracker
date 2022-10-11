@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    TouchableOpacity,
-    Text,
     StyleSheet,
     TextInput,
     View
@@ -9,7 +7,6 @@ import {
 
 import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
-import constants from '../constants/constants';
 import SIZES from '../constants/SIZES';
 
 
@@ -34,27 +31,11 @@ const FormInput = ({
 })=>{
     return (
         <View 
-            style={{...containerStyle}}
-        >
-            <View
-                style={{
-                    flexDirection: "row",
-                    height : 55,
-                    paddingHorizontal: SIZES.radius,
-                    borderRadius: SIZES.radius,
-                    alignItems: 'center',
-                    backgroundColor : COLORS.lightGrey,
-                    ...inputContainerStyle
-                }}
-            >
+            style={{...containerStyle}}>
+            <View style={{...styles.container,...inputContainerStyle}}>
                 {prependComponent}
                 <TextInput 
-                    style={{
-                        flex : 1,
-                        paddingVertical : 0,
-                        ...FONTS.body3,
-                        ...inputStyle
-                    }}
+                    style={{...styles.textinput,...inputStyle}}
                     value={value}
                     placeholder={placeholder}
                     placeholderTextColor={placeHolderTextColor}
@@ -74,7 +55,19 @@ const FormInput = ({
 }
 
 const styles = StyleSheet.create({
-
+    container :{
+        flexDirection: "row",
+        height : 55,
+        paddingHorizontal: SIZES.radius,
+        borderRadius: SIZES.radius,
+        alignItems: 'center',
+        backgroundColor : COLORS.lightGrey
+    },
+    textinput:{
+        flex : 1,
+        paddingVertical : 0,
+        ...FONTS.body3
+    }
 });
 
 export default FormInput;

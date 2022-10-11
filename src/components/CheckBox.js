@@ -15,44 +15,21 @@ import icons from '../constants/icons';
 
 const CheckBox = ({ containerStyle, isSelected, onPress })=>{
     return (
-        <TouchableOpacity
-            style={{
-                flexDirection: 'row',
-                ...containerStyle
-            }}
+        <TouchableOpacity style={{...styles.container,...containerStyle }}
             onPress={onPress}
         >
-            <View
-                style={{
-                    width : 25,
-                    height : 25,
-                    alignItems : 'center',
-                    borderRadius : SIZES.base,
-                    borderWidth : 3,
-                    borderColor : isSelected ? COLORS.primary : COLORS.grey,
-                    backgroundColor : isSelected ? COLORS.primary : null
-                }}
+            <View style={{...styles.checkbox,borderColor : isSelected ? COLORS.primary : COLORS.grey,
+                            backgroundColor : isSelected ? COLORS.primary : null}}
             >
                 {
                     isSelected &&
                     <Image 
                         source={icons.checkmark}
-                        style={{
-                            width: 20,
-                            height : 20,
-                            tintColor : COLORS.light
-                        }}
+                        style={styles.image}
                     />
                 }
             </View>
-            <Text
-                style={{
-                    flex :1,
-                    marginLeft : SIZES.base,
-                    ...FONTS.body5,
-                    lineHeight : 20
-                }}
-            >
+            <Text style={styles.text}>
                 By registering, you agree to our Terms and Conditions and that you have read our Data Use Policy.
             </Text>
         </TouchableOpacity>
@@ -60,7 +37,27 @@ const CheckBox = ({ containerStyle, isSelected, onPress })=>{
 }
 
 const styles = StyleSheet.create({
-
+    container : {
+        flexDirection: 'row'
+    },
+    checkbox:{
+        width : 25,
+        height : 25,
+        alignItems : 'center',
+        borderRadius : SIZES.base,
+        borderWidth : 3
+    },
+    image:{
+        width: 20,
+        height : 20,
+        tintColor : COLORS.light
+    },
+    text:{
+        flex :1,
+        marginLeft : SIZES.base,
+        ...FONTS.body5,
+        lineHeight : 20
+    }
 });
 
 export default CheckBox;

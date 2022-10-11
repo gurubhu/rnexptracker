@@ -22,18 +22,6 @@ const Footer = ({ navigation, scrollX })=>{
             <Dots dotPosition={dotPosition}/>
             {/* Buttons  */}
             <View style={styles.buttonsContainer}>
-                {/* <TextButton 
-                    label="Create Account"
-                    contentContainerStyle={{
-                        flex : 1,
-                        borderRadius : SIZES.radius,
-                        backgroundColor : COLORS.lightGrey
-                    }}
-                    labelStyle={{
-                        color : COLORS.primary,
-                        ...FONTS.h3
-                    }}
-                /> */}
                 <TextButton 
                     label="Join Now"
                     contentContainerStyle={{
@@ -46,7 +34,7 @@ const Footer = ({ navigation, scrollX })=>{
                         ...FONTS.h3
                     }}
 
-                    onPress ={()=>navigation.navigate('AuthMain')} //'AuthMain'
+                    onPress ={()=>navigation.navigate('AuthMain')}
                 />
             </View>
         </View>

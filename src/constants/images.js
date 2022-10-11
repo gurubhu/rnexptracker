@@ -8,8 +8,6 @@ const get_card = require('../assets/images/get_card.png')
 const get_money = require('../assets/images/get_money.png')
 const get_reward = require('../assets/images/get_reward.png')
 const lock = require('../assets/images/lock.png')
-const logo = require('../assets/images/logo.png')
-const qr_code = require('../assets/images/qr_code.png')
 const walkthrough01 = require('../assets/images/walkthrough-01.png')
 const walkthrough02 = require('../assets/images/walkthrough-02.png')
 const walkthrough03 = require('../assets/images/walkthrough-03.png')
@@ -51,8 +49,6 @@ export default {
     get_money,
     get_reward,
     lock,
-    logo,
-    qr_code,
     walkthrough01,
     walkthrough02,
     walkthrough03,

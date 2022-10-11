@@ -12,6 +12,7 @@ const COLORS = {
     primary60: 'rgba(78, 85, 175, 0.6)',
     primary20: 'rgba(78, 85, 175, 0.2)',
     primary08: 'rgba(78, 85, 175, 0.08)',
+    newPrimary : 'rgba(245, 219, 161, 0.85)',
 
     // Secondary
     secondary: 'rgba(161, 219, 245, 1)',
@@ -19,6 +20,7 @@ const COLORS = {
     secondary60: 'rgba(161, 219, 245, 0.6)',
     secondary20: 'rgba(161, 219, 245, 0.2)',
     secondary08: 'rgba(161, 219, 245, 0.08)',
+    newSecondary: 'rgba(175, 85, 78, 0.19)',
 
     // Success
     success: 'rgba(253, 212, 70, 1)',
