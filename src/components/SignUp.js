@@ -32,7 +32,7 @@ const SignUp = ({ navigation })=>{
     return(
         <View style={{
             marginTop : SIZES.padding,
-            height : SIZES.height * 0.72
+            height : SIZES.height * 0.74
         }}>
             
             <View style={{...styles.authContainer,...styles.shadow}}>

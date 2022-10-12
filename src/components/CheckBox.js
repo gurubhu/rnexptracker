@@ -30,7 +30,7 @@ const CheckBox = ({ containerStyle, isSelected, onPress })=>{
                 }
             </View>
             <Text style={styles.text}>
-                By registering, you agree to our Terms and Conditions and that you have read our Data Use Policy.
+                By registering, you agree to our Terms and Conditions.
             </Text>
         </TouchableOpacity>
     )

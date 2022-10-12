@@ -102,7 +102,7 @@ const SignIn = ({ navigation })=>{
 const styles = StyleSheet.create({
     container:{
         marginTop : SIZES.padding * 4.5,
-        height : SIZES.height * 0.48,
+        height : SIZES.height * 0.55,
         
     },
     signin:{
