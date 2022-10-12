@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useContext } from 'react';
 import {
     Text,
     StyleSheet,
@@ -18,7 +18,11 @@ import icons from '../constants/icons';
 
 import { validateEmail } from '../constants/Utility';
 
-const SignIn = ({ navigation })=>{
+import { Context as AuthContext} from '../context/AuthContext';
+
+const SignIn = ()=>{
+
+    const { signin, state } = useContext(AuthContext);
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -34,6 +38,10 @@ const SignIn = ({ navigation })=>{
                 { 
                     errorMessage && 
                     <Text style={styles.error}>{errorMessage}</Text>
+                }
+                { 
+                    state.errorMessage && 
+                    <Text style={styles.error}>{state.errorMessage}</Text>
                 }
                 <View>
                     {/* Email */}
@@ -88,9 +96,10 @@ const SignIn = ({ navigation })=>{
                         if(!email) return setErrorMessage('Enter Your Email');
                         if(!validateEmail(email)) return setErrorMessage('Invalid Email')
                         if(!password) return setErrorMessage('Enter Your Password');
-                        console.log(email, password);
+                        //console.log(email, password);
                         setErrorMessage('')
-                        navigation.navigate('Account')
+                        signin({ email, password });
+                        //navigation.navigate('Account')
                     }}
                 />
             </View>

@@ -39,7 +39,6 @@ const clearErrorMessage = dispatch => ()=>{
 
 const signup = dispatch =>{
     return async ({ email, password })=>{
-        //console.log(email,password);
         // make api request to sign up with email and password
         try {
              //if sign up successful, modify our state and say that we are authenticated.
@@ -47,8 +46,9 @@ const signup = dispatch =>{
             await AsyncStorage.setItem('token', response.data.token);
             dispatch( { type : 'signup' , payload : response.data.token });
             // navigate to main flow
-            navigate('TrackList');
+            navigate('Account');
         } catch (error) {
+            console.log(error);
             // if sign up failed,we need to show error message
             dispatch({ type: 'add_error', payload : 'Something went wrong with sign up.'})
         }       
@@ -63,8 +63,9 @@ const signin = (dispatch) =>{
            await AsyncStorage.setItem('token', response.data.token);
            dispatch( { type : 'signin' , payload : response.data.token });
            // navigate to main flow
-           navigate('TrackList');
+           navigate('Account');
        } catch (error) {
+            console.log(error);
            // if sign up failed,we need to show error message
            dispatch({ type: 'add_error', payload : 'Something went wrong with sign in.'})
        }  

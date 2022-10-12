@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useContext } from 'react';
 import {
     Text,
     StyleSheet,
@@ -18,7 +18,11 @@ import icons from '../constants/icons';
 
 import { validateEmail } from '../constants/Utility';
 
-const SignUp = ({ navigation })=>{
+import { Context as AuthContext} from '../context/AuthContext';
+
+const SignUp = ()=>{
+
+    const { signup, state } = useContext(AuthContext);
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -45,6 +49,10 @@ const SignUp = ({ navigation })=>{
                 { 
                     errorMessage && 
                     <Text style={styles.error}>{errorMessage}</Text>
+                }
+                { 
+                    state.errorMessage && 
+                    <Text style={styles.error}>{state.errorMessage}</Text>
                 }
                 <View>
                     {/* Name */}
@@ -178,10 +186,8 @@ const SignUp = ({ navigation })=>{
                         if(!confirmPassword) return setErrorMessage('Enter Confirm Password');
                         if(password !== confirmPassword) return setErrorMessage('Password and Confirm Password are different');
                         if(!termsChecked) return setErrorMessage('Please select Terms and Conditions.');
-                        console.log(name);           
-                        console.log(email, password);
                         setErrorMessage('')
-                        navigation.navigate('Account')
+                        signup({email, password});
                     }}
                 />
             </View>

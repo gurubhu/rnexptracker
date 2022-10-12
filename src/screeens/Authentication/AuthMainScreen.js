@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useContext } from 'react';
 import {
     StyleSheet,
     View
@@ -11,6 +11,7 @@ import AuthFooter from './../../components/AuthFooter';
 
 import COLORS from '../../constants/COLORS';
 import SIZES from '../../constants/SIZES';
+
 
 
 const AuthMainScreen = ({ navigation })=>{
@@ -31,13 +32,9 @@ const AuthMainScreen = ({ navigation })=>{
             }}>
                 {/* {renderAuthContainer()} */}
                 { mode === 'signIn' ? 
-                    <SignIn
-                        navigation={navigation}
-                    />
+                    <SignIn />
                     : 
-                    <SignUp
-                        navigation={navigation}
-                    />
+                    <SignUp />
                 }
             </View>
             {/* Auth Container Footer */}
