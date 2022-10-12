@@ -76,7 +76,7 @@ const signout = dispatch => async ()=>{
     await AsyncStorage.removeItem('token');
     //await AsyncStorage.clear();
     dispatch({ type : 'signout' });
-    navigate('loginFlow');
+    navigate('AuthMain');
 }
 
 

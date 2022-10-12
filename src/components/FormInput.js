@@ -30,6 +30,7 @@ const FormInput = ({
 
 })=>{
     return (
+        
         <View 
             style={{...containerStyle}}>
             <View style={{...styles.container,...inputContainerStyle}}>
@@ -44,7 +45,7 @@ const FormInput = ({
                     autoComplete={autoCompleteType} //verify
                     autoCapitalize={autoCapitalize}
                     maxLength={maxLength}
-                    onChange={(text)=> onChange(text)}
+                    onChangeText={(text)=> onChange(text)}
                     onPressIn={onPress}
                     editable={editable}
                 />

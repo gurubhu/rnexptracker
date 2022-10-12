@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import {
     Text,
     StyleSheet,
     View,
     Image
 } from 'react-native';
+
 
 import TextButton from './TextButton';
 import FormInput from './FormInput';
@@ -15,12 +16,14 @@ import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 import icons from '../constants/icons';
 
-const SignIn = ({
-    email, setEmail, 
-    password, setPassword, 
-    isPasswordVisible, setIsPasswordVisible,
-    navigation
-})=>{
+import { validateEmail } from '../constants/Utility';
+
+const SignIn = ({ navigation })=>{
+    
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('');
 
     return(
         <View style={styles.container}>               
@@ -28,13 +31,17 @@ const SignIn = ({
                 <Text style={styles.signin}>
                     Sign in to Outlay
                 </Text>
+                { 
+                    errorMessage && 
+                    <Text style={styles.error}>{errorMessage}</Text>
+                }
                 <View>
                     {/* Email */}
                     <FormInput 
                         containerStyle={styles.emailContainerStyle}
                         placeholder="Email"
                         value={email}
-                        onChange={(text)=> setEmail(text)}
+                        onChange={setEmail}
                         prependComponent={
                             <Image 
                                 source={icons.email}
@@ -77,7 +84,14 @@ const SignIn = ({
                     label="Log In"
                     contentContainerStyle={styles.loginContainerStyle}
                     labelStyle={styles.loginLabelStyle}
-                    onPress={()=> navigation.navigate('Account')}
+                    onPress={()=>{
+                        if(!email) return setErrorMessage('Enter Your Email');
+                        if(!validateEmail(email)) return setErrorMessage('Invalid Email')
+                        if(!password) return setErrorMessage('Enter Your Password');
+                        console.log(email, password);
+                        setErrorMessage('')
+                        navigation.navigate('Account')
+                    }}
                 />
             </View>
             
@@ -142,6 +156,11 @@ const styles = StyleSheet.create({
     },
     loginLabelStyle:{
         ...FONTS.h3
+    },
+    error:{
+        ...FONTS.body3,
+        color : COLORS.error,
+        marginVertical: SIZES.radius
     }
 });
 

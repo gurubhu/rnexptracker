@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import {
     Text,
     StyleSheet,
@@ -16,15 +16,18 @@ import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 import icons from '../constants/icons';
 
-const SignUp = ({
-    name, setName, 
-    email, setEmail, 
-    password, setPassword, 
-    isPasswordVisible, setIsPasswordVisible, 
-    confirmPassword, setConfirmPassword, 
-    termsChecked, setTermsChecked, 
-    isConfirmPasswordVisible, setIsConfirmPasswordVisible
-})=>{
+import { validateEmail } from '../constants/Utility';
+
+const SignUp = ({ navigation })=>{
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [termsChecked, setTermsChecked] = useState(false)
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
+    const [name, setName] = useState("")
+    const [errorMessage, setErrorMessage] = useState('');
 
     return(
         <View style={{
@@ -39,6 +42,10 @@ const SignUp = ({
                 }}>
                     Create New Account
                 </Text>
+                { 
+                    errorMessage && 
+                    <Text style={styles.error}>{errorMessage}</Text>
+                }
                 <View>
                     {/* Name */}
                     <FormInput 
@@ -163,7 +170,19 @@ const SignUp = ({
                         ...FONTS.h3
                     }}
 
-                    onPress={()=> console.log("Create Account")}
+                    onPress={()=> {
+                        if(!name) return setErrorMessage('Enter Your Name');
+                        if(!email) return setErrorMessage('Enter Your Email');
+                        if(!validateEmail(email)) return setErrorMessage('Invalid Email')
+                        if(!password) return setErrorMessage('Enter Your Password');  
+                        if(!confirmPassword) return setErrorMessage('Enter Confirm Password');
+                        if(password !== confirmPassword) return setErrorMessage('Password and Confirm Password are different');
+                        if(!termsChecked) return setErrorMessage('Please select Terms and Conditions.');
+                        console.log(name);           
+                        console.log(email, password);
+                        setErrorMessage('')
+                        navigation.navigate('Account')
+                    }}
                 />
             </View>
             
@@ -210,6 +229,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius : SIZES.radius,
         backgroundColor : COLORS.grey20
+    },
+    error:{
+        ...FONTS.body3,
+        color : COLORS.error,
+        marginVertical: SIZES.radius
     }
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import {
     StyleSheet,
     View
@@ -15,15 +15,8 @@ import SIZES from '../../constants/SIZES';
 
 const AuthMainScreen = ({ navigation })=>{
 
-    const [mode, setMode] = React.useState("signIn")
-    const [email, setEmail] = React.useState("")
-    const [name, setName] = React.useState("")
-    const [password, setPassword] = React.useState("")
-    const [confirmPassword, setConfirmPassword] = React.useState("")
-    const [isPasswordVisible, setIsPasswordVisible] = React.useState(false)
-    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = React.useState(false)
-    const [termsChecked, setTermsChecked]= React.useState(false)
- 
+    const [mode, setMode] = useState("signIn")
+
     return (
         <View style={styles.container}>
             {/* Logo */}
@@ -38,21 +31,11 @@ const AuthMainScreen = ({ navigation })=>{
             }}>
                 {/* {renderAuthContainer()} */}
                 { mode === 'signIn' ? 
-                    <SignIn 
-                        email={email} setEmail={setEmail} 
-                        password={password} setPassword = {setPassword} 
-                        isPasswordVisible={isPasswordVisible} setIsPasswordVisible={setIsPasswordVisible}
+                    <SignIn
                         navigation={navigation}
                     />
                     : 
-                    <SignUp 
-                        email={email} setEmail={setEmail} 
-                        password={password} setPassword = {setPassword} 
-                        isPasswordVisible={isPasswordVisible} setIsPasswordVisible={setIsPasswordVisible} 
-                        name={name} setName={setName}
-                        confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword}
-                        isConfirmPasswordVisible={isConfirmPasswordVisible} setIsConfirmPasswordVisible={setIsConfirmPasswordVisible}
-                        termsChecked={termsChecked} setTermsChecked={setTermsChecked}
+                    <SignUp
                         navigation={navigation}
                     />
                 }
