@@ -24,7 +24,7 @@ const WelcomeScreen = ({ navigation }) => {
                     Welcome to
                 </Text>
                 <Text style={styles.outlayText}>
-                    Outlay
+                    Squander
                 </Text>
             </View>
             {/* Footer Buttons */}

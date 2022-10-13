@@ -33,7 +33,7 @@ const SignIn = ()=>{
         <View style={styles.container}>               
             <View style={{...styles.authContainer,...styles.shadow}}>
                 <Text style={styles.signin}>
-                    Sign in to Outlay
+                    Sign in to Squander
                 </Text>
                 { 
                     errorMessage && 

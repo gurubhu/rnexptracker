@@ -187,7 +187,7 @@ const SignUp = ()=>{
                         if(password !== confirmPassword) return setErrorMessage('Password and Confirm Password are different');
                         if(!termsChecked) return setErrorMessage('Please select Terms and Conditions.');
                         setErrorMessage('')
-                        signup({email, password});
+                        signup({name, email, password});
                     }}
                 />
             </View>

@@ -38,19 +38,21 @@ const clearErrorMessage = dispatch => ()=>{
 }
 
 const signup = dispatch =>{
-    return async ({ email, password })=>{
+    return async ({ name, email, password })=>{
+
         // make api request to sign up with email and password
         try {
+            const selectedTermsAndCondition = true;
              //if sign up successful, modify our state and say that we are authenticated.
-            const response = await trackerApi.post('/signup', { email, password });
+            const response = await trackerApi.post('/signup', { name, email, password, selectedTermsAndCondition });
             await AsyncStorage.setItem('token', response.data.token);
             dispatch( { type : 'signup' , payload : response.data.token });
             // navigate to main flow
             navigate('Account');
         } catch (error) {
-            console.log(error);
+            //console.log('SignUP Error2',error.response);
             // if sign up failed,we need to show error message
-            dispatch({ type: 'add_error', payload : 'Something went wrong with sign up.'})
+            dispatch({ type: 'add_error', payload : error.response.data.error })
         }       
     }
 }
@@ -65,9 +67,8 @@ const signin = (dispatch) =>{
            // navigate to main flow
            navigate('Account');
        } catch (error) {
-            console.log(error);
            // if sign up failed,we need to show error message
-           dispatch({ type: 'add_error', payload : 'Something went wrong with sign in.'})
+           dispatch({ type: 'add_error', payload : error.response.data.error })
        }  
     }
 }
