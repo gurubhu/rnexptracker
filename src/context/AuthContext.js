@@ -81,11 +81,15 @@ const signout = dispatch => async ()=>{
     navigate('AuthMain');
 }
 
+const addError = dispatch => async (errMessage)=>{
+    dispatch({ type: 'add_error', payload : errMessage })
+}
+
 
 
 
 export const { Context, Provider} = createDataContext(
     authReducer,  
-    { signin, signout, signup, clearErrorMessage, tryLocalSignin }, 
+    { signin, signout, signup, clearErrorMessage, tryLocalSignin, addError }, 
     { token : null , errorMessage: ''}
 );

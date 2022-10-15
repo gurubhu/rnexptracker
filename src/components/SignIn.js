@@ -22,12 +22,11 @@ import { Context as AuthContext} from '../context/AuthContext';
 
 const SignIn = ()=>{
 
-    const { signin, state } = useContext(AuthContext);
+    const { signin, state, addError } = useContext(AuthContext);
     
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('');
 
     return(
         <View style={styles.container}>               
@@ -35,10 +34,6 @@ const SignIn = ()=>{
                 <Text style={styles.signin}>
                     Sign in to Squander
                 </Text>
-                { 
-                    errorMessage && 
-                    <Text style={styles.error}>{errorMessage}</Text>
-                }
                 { 
                     state.errorMessage && 
                     <Text style={styles.error}>{state.errorMessage}</Text>
@@ -93,13 +88,10 @@ const SignIn = ()=>{
                     contentContainerStyle={styles.loginContainerStyle}
                     labelStyle={styles.loginLabelStyle}
                     onPress={()=>{
-                        if(!email) return setErrorMessage('Enter Your Email');
-                        if(!validateEmail(email)) return setErrorMessage('Invalid Email')
-                        if(!password) return setErrorMessage('Enter Your Password');
-                        //console.log(email, password);
-                        setErrorMessage('')
+                        if(!email) return addError('Enter Your Email');
+                        if(!validateEmail(email)) return addError('Invalid Email')
+                        if(!password) return addError('Enter Your Password');
                         signin({ email, password });
-                        //navigation.navigate('Account')
                     }}
                 />
             </View>
