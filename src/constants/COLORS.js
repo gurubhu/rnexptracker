@@ -8,6 +8,7 @@ const COLORS = {
 
     // Primary
     primary: 'rgba(78, 85, 175, 1)',
+    //primary: '#0da253',
     primary80: 'rgba(78, 85, 175, 0.8)',
     primary60: 'rgba(78, 85, 175, 0.6)',
     primary20: 'rgba(78, 85, 175, 0.2)',
@@ -16,6 +17,7 @@ const COLORS = {
 
     // Secondary
     secondary: 'rgba(161, 219, 245, 1)',
+    //secondary: '#9af7c5',
     secondary80: 'rgba(161, 219, 245, 0.8)',
     secondary60: 'rgba(161, 219, 245, 0.6)',
     secondary20: 'rgba(161, 219, 245, 0.2)',
@@ -82,7 +84,7 @@ const COLORS = {
     shadow08: 'rgba(138, 149, 158, 0.08)',
 
     //white
-    white: 'rgba(138, 149, 158, 1)'
+    white: '#fff'
 }
 
 export default COLORS;

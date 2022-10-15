@@ -1,4 +1,5 @@
 const banner01 = require('../assets/images/banner-01.png')
+const banner = require('../assets/images/banner.png')
 const banner02 = require('../assets/images/banner-02.png')
 const banner03 = require('../assets/images/banner-03.png')
 const buy_coffee = require('../assets/images/buy_coffee.png')
@@ -40,6 +41,7 @@ const luggage_01 = require('../assets/images/dummy/luggage_01.png')
 
 export default {
     banner01,
+    banner,
     banner02,
     banner03,
     buy_coffee,

@@ -16,6 +16,7 @@
     "axios": "^0.27.2",
     "expo": "~46.0.9",
     "expo-font": "~10.2.0",
+    "expo-jwt": "^1.4.1",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.6",
     "moti": "^0.20.0",

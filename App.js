@@ -16,10 +16,12 @@ import ResolveAuthScreen from './src/screeens/ResolveAuthScreen';
 import WelcomeScreen from './src/screeens/WelcomeScreen';
 import WalkthroughScreen from './src/screeens/WalkthroughScreen';
 import AuthMainScreen from './src/screeens/Authentication/AuthMainScreen';
+import HomeScreen from './src/screeens/Home/HomeScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
 import { setNavigator } from './src/navigation/NavigationRef';
+
 
 // const switchNavigator = createSwitchNavigator({
 //    ResolveAuth : ResolveAuthScreen,
@@ -66,6 +68,7 @@ const switchNavigator = createSwitchNavigator({
   Welcome : WelcomeScreen,
   Walkthrough: WalkthroughScreen,
   AuthMain : AuthMainScreen,
+  Home: HomeScreen,
   Account: AccountScreen
 })
 
