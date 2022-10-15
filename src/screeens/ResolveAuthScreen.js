@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 
 import { Context as AuthContext } from '../context/AuthContext';
 

@@ -1,6 +1,9 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
+//console.log('Width', width);
+//console.log('Height', height);
+
 const SIZES = {
     // global sizes
     base: 8,

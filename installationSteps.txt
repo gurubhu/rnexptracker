@@ -39,3 +39,6 @@ Async Storage Update
 Then update the import as :
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+https://unsplash.com/photos/GbpmuLU-WFk : Unsplash URL of loading image.
