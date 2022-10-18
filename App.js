@@ -17,6 +17,7 @@ import WelcomeScreen from './src/screeens/WelcomeScreen';
 import WalkthroughScreen from './src/screeens/WalkthroughScreen';
 import AuthMainScreen from './src/screeens/Authentication/AuthMainScreen';
 import HomeScreen from './src/screeens/Home/HomeScreen';
+import AddBalanceScreen from './src/screeens/AddBalanceScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
@@ -69,7 +70,8 @@ const switchNavigator = createSwitchNavigator({
   Walkthrough: WalkthroughScreen,
   AuthMain : AuthMainScreen,
   Home: HomeScreen,
-  Account: AccountScreen
+  Account: AccountScreen,
+  AddBalance : AddBalanceScreen
 })
 
 const App = createAppContainer(switchNavigator);

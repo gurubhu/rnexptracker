@@ -3,7 +3,8 @@ import {
     StyleSheet,
     LogBox,
     ScrollView,
-    View
+    View,
+    Text
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,6 +12,8 @@ import trackerApi from '../../api/tracker';
 
 import HomeHeader from '../../components/HomeHeader';
 import Balance from '../../components/Balance';
+
+import { fetchAccountDetails1 } from '../../context/AccountContext';
 
 const HomeScreen = ({ navigation}) => {
     const [accountDetails, setAccountDetails] = useState({});
@@ -21,26 +24,9 @@ const HomeScreen = ({ navigation}) => {
         userName = navigation.state.params.userName
     }
 
-    const fetchAccountDetails = async ()=>{
-        try {
-            //if fetching account details is successful, modify our state
-            const token = await AsyncStorage.getItem('token');
-            if(token){
-               const response = await trackerApi.get('/account',{
-                   headers :{
-                       Authorization : `Bearer ${token}`
-                   }
-               });
-               setAccountDetails(response.data);
-            }
-       } catch (error) {
-           console.log(error.message);
-       }   
-    }
-
     useEffect(()=>{
         LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-        fetchAccountDetails()
+        fetchAccountDetails1(setAccountDetails)
     },[]);
 
     return (
@@ -48,7 +34,7 @@ const HomeScreen = ({ navigation}) => {
             <View style={styles.container}>
                 <View style={{ width : "100%", height : 290,...styles.shadow}} >
                         <HomeHeader name={userName} />
-                        <Balance balance={accountDetails.amount}/>
+                        <Balance balance={accountDetails.amount} navigation={navigation}/>
                 </View>
             </View>
         </ScrollView>
