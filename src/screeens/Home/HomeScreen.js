@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
     StyleSheet,
     LogBox,
@@ -7,34 +7,33 @@ import {
     Text
 } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import trackerApi from '../../api/tracker';
-
 import HomeHeader from '../../components/HomeHeader';
 import Balance from '../../components/Balance';
+import Loader from '../../components/Loader';
 
-import { fetchAccountDetails1 } from '../../context/AccountContext';
+
+
+import { Context as AccountContext} from '../../context/AccountContext';
 
 const HomeScreen = ({ navigation}) => {
-    const [accountDetails, setAccountDetails] = useState({});
-    
-    let userName = ''
-    
-    if(navigation.state.params.userName){
-        userName = navigation.state.params.userName
-    }
 
+    const { fetchAccountDetails, state } = useContext(AccountContext);
+    
     useEffect(()=>{
         LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-        fetchAccountDetails1(setAccountDetails)
+        fetchAccountDetails();
     },[]);
+
+
+   if(!state.accountDetails.userName) return <Loader />
 
     return (
         <ScrollView>
             <View style={styles.container}>
                 <View style={{ width : "100%", height : 290,...styles.shadow}} >
-                        <HomeHeader name={userName} />
-                        <Balance balance={accountDetails.amount} navigation={navigation}/>
+                        <HomeHeader name={state.accountDetails.userName} />
+                            <Balance navigation={navigation} state={state}
+                            />
                 </View>
             </View>
         </ScrollView>

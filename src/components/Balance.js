@@ -6,14 +6,21 @@ import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 
-const Balance = ({ balance, navigation })=>{
+const Balance = ({ navigation, state })=>{
 
-  if(balance === undefined) return null;
+  if(state.accountDetails === undefined) return null;
+
+  //console.log('Balance', state.errorMessage)
+  //console.log('Balance Account', state)
+
+  if(state.errorMessage) return <Text> Unable to fetch balance</Text>
+
+  const { amount } = state.accountDetails;
 
   return (
     <>
         {
-            balance == 0 ?
+            amount == 0 ?
             <View style={styles.container}>
                 <View style={{flexDirection : 'row'}}>
                     <Text style={styles.addBalance}>
@@ -30,7 +37,7 @@ const Balance = ({ balance, navigation })=>{
                 <Text style={styles.balance}>
                 <FontAwesome name="rupee" size={25} color={COLORS.secondary} />
                 <View style={{ width : 20 }}></View>
-                {balance}
+                {amount}
                 <View style={{ width : 20 }}></View>
                 <FontAwesome name="plus-circle" size={30} color={COLORS.primary} onPress={()=> navigation.navigate('AddBalance')} />
                 </Text>       

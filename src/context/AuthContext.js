@@ -17,6 +17,8 @@ const authReducer = (state, action)=>{
             return {...state, errorMessage : ''};
         case 'signout':
             return { token : null, errorMessage : ''};
+        case 'signout':
+                return { token : null, errorMessage : ''};
         default :
            return state;
     }
@@ -31,7 +33,7 @@ const tryLocalSignin = dispatch => async ()=>{
         //console.log('tryLocalSignin', result);
         dispatch({ type : 'signin', payload : token });
         userName = result.userName;
-        navigate('Home',{userName});
+        navigate('Home');
     }
     else{
         navigate('Welcome');
@@ -56,12 +58,13 @@ const signup = dispatch =>{
             // navigate to main flow
             const result= JWT.decode(response.data.token, 'MY_SECRET_KEY');
             userName= result.userName;
-            navigate('Home',{userName});
+            navigate('Home');
         } catch (error) {
             //console.log('SignUP Error2',error.response);
             // if sign up failed,we need to show error message
-            if(error.response.data)
-            dispatch({ type: 'add_error', payload : error.response.data.error })
+            //if(error.response.data)
+            //dispatch({ type: 'add_error', payload : error.response.data.error })
+            console.log(error)
         }       
     }
 }
@@ -78,11 +81,12 @@ const signin = (dispatch) =>{
            const result= JWT.decode(response.data.token, 'MY_SECRET_KEY');
            //console.log('signin', result);
            userName= result.userName;
-           navigate('Home',{userName});
+           navigate('Home');
        } catch (error) {
            // if sign up failed,we need to show error message
-           if(error.response.data)
-           dispatch({ type: 'add_error', payload : error.response.data.error })
+          // if(error.response.data)
+           //dispatch({ type: 'add_error', payload : error.response.data.error })
+           console.log(error)
        }  
     }
 }

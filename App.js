@@ -20,6 +20,7 @@ import HomeScreen from './src/screeens/Home/HomeScreen';
 import AddBalanceScreen from './src/screeens/AddBalanceScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
+import { Provider as AccountProvider } from './src/context/AccountContext';
 
 import { setNavigator } from './src/navigation/NavigationRef';
 
@@ -96,6 +97,8 @@ export default ()=>{
   }
 
   return <AuthProvider>
+    <AccountProvider>
       <App ref={(navigator)=> { setNavigator(navigator) }}/>
+    </AccountProvider>
   </AuthProvider>
 }
