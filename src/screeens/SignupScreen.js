@@ -16,9 +16,6 @@ const SignupScreen = ({ navigation })=>{
         <View style={styles.container}>
             <NavigationEvents 
                onWillFocus={clearErrorMessage}
-                //onDidFocus={()=>{}}
-                //onWillBlur={clearErrorMessage}
-                //onDidBlur={()=>{}}
             />
             <AuthForm 
                 headerText="Sign Up for Tracker"

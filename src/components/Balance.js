@@ -1,33 +1,33 @@
 import React from 'react';
 import { View, StyleSheet, Text} from 'react-native';
-import { FontAwesome, Feather  } from '@expo/vector-icons';
+import { FontAwesome} from '@expo/vector-icons';
 
 import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 
-const Balance = ({ navigation, state })=>{
+const Balance = ({ navigation, state, plusIcon })=>{
 
-  if(state.accountDetails === undefined) return null;
+  
 
-  //console.log('Balance', state.errorMessage)
-  //console.log('Balance Account', state)
+  if(state.accountDetails.total === undefined) return null;
 
-  if(state.errorMessage) return <Text> Unable to fetch balance</Text>
+  //if(state.errorMessage) return <Text> Unable to fetch balance</Text>
 
-  const { amount } = state.accountDetails;
+  const { total } = state.accountDetails;
+  
 
   return (
     <>
         {
-            amount == 0 ?
+            total === 0 ?
             <View style={styles.container}>
                 <View style={{flexDirection : 'row'}}>
                     <Text style={styles.addBalance}>
                         Add Balance 
                     </Text>
                     <View style={{marginTop : 10}}>
-                        <FontAwesome name="plus-circle" size={25} color={COLORS.primary} onPress={()=> navigation.navigate('AddBalance')} style={{ marginLeft : 10}}/>
+                        { plusIcon }
                     </View>
                 </View>
             </View>
@@ -37,9 +37,9 @@ const Balance = ({ navigation, state })=>{
                 <Text style={styles.balance}>
                 <FontAwesome name="rupee" size={25} color={COLORS.secondary} />
                 <View style={{ width : 20 }}></View>
-                {amount}
+                {total}
                 <View style={{ width : 20 }}></View>
-                <FontAwesome name="plus-circle" size={30} color={COLORS.primary} onPress={()=> navigation.navigate('AddBalance')} />
+                    {plusIcon}
                 </Text>       
                 <Text style={styles.change}><FontAwesome name="rupee" size={12} color={COLORS.primary} /> 540 change in  Last 24 hours</Text>
             </View>

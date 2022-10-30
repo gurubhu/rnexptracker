@@ -7,9 +7,13 @@ import {
     Text
 } from 'react-native';
 
+import { FontAwesome} from '@expo/vector-icons';
+
 import HomeHeader from '../../components/HomeHeader';
 import Balance from '../../components/Balance';
 import Loader from '../../components/Loader';
+
+import COLORS from '../../constants/COLORS';
 
 
 
@@ -33,6 +37,14 @@ const HomeScreen = ({ navigation}) => {
                 <View style={{ width : "100%", height : 290,...styles.shadow}} >
                         <HomeHeader name={state.accountDetails.userName} />
                             <Balance navigation={navigation} state={state}
+                                plusIcon={
+                                    <FontAwesome 
+                                        name="plus-circle" 
+                                        size={25} color={COLORS.primary} 
+                                        onPress={()=> navigation.navigate('AddBalance')} 
+                                        style={{ marginLeft : 10}}
+                                    />
+                                }
                             />
                 </View>
             </View>
