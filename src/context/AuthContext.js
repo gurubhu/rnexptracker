@@ -63,8 +63,8 @@ const signup = dispatch =>{
             //console.log('SignUP Error2',error.response);
             // if sign up failed,we need to show error message
             //if(error.response.data)
-            //dispatch({ type: 'add_error', payload : error.response.data.error })
-            console.log(error)
+            dispatch({ type: 'add_error', payload : error.response.data.error })
+            //console.log(error)
         }       
     }
 }
@@ -85,8 +85,8 @@ const signin = (dispatch) =>{
        } catch (error) {
            // if sign up failed,we need to show error message
           // if(error.response.data)
-           //dispatch({ type: 'add_error', payload : error.response.data.error })
-           console.log(error)
+           dispatch({ type: 'add_error', payload : error.response.data.error })
+           //console.log(error)
        }  
     }
 }

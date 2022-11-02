@@ -7,7 +7,7 @@ import {
     Text
 } from 'react-native';
 
-import { FontAwesome} from '@expo/vector-icons';
+import { FontAwesome, Octicons} from '@expo/vector-icons';
 
 import HomeHeader from '../../components/HomeHeader';
 import Balance from '../../components/Balance';
@@ -42,6 +42,12 @@ const HomeScreen = ({ navigation}) => {
                                         name="plus-circle" 
                                         size={25} color={COLORS.primary} 
                                         onPress={()=> navigation.navigate('AddBalance')} 
+                                        style={{ marginLeft : 10}}
+                                    />
+                                }
+                                historyIcon={
+                                    <Octicons name="history" 
+                                        size={25} color={COLORS.primary}  
                                         style={{ marginLeft : 10}}
                                     />
                                 }

@@ -6,7 +6,7 @@ import FONTS from '../constants/FONTS';
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 
-const Balance = ({ navigation, state, plusIcon })=>{
+const Balance = ({ navigation, state, plusIcon, historyIcon })=>{
 
   
 
@@ -39,7 +39,9 @@ const Balance = ({ navigation, state, plusIcon })=>{
                 <View style={{ width : 20 }}></View>
                 {total}
                 <View style={{ width : 20 }}></View>
-                    {plusIcon}
+                    {plusIcon} 
+                <View style={{ width : 20 }}></View>
+                    {historyIcon}
                 </Text>       
                 <Text style={styles.change}><FontAwesome name="rupee" size={12} color={COLORS.primary} /> 540 change in  Last 24 hours</Text>
             </View>

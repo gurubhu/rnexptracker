@@ -3,8 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Image,
-    TextInput
+    ScrollView
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -13,11 +12,11 @@ import Loader from '../components/Loader';
 import Balance from '../components/Balance';
 import FormInput from '../components/FormInput';
 import TextButton from '../components/TextButton';
+import AddBalanceHistory from '../components/AddBalanceHistory';
 
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
 import FONTS from '../constants/FONTS';
-import icons from '../constants/icons';
 
 import { Context as AccountContext} from '../context/AccountContext';
 import { FontAwesome, MaterialIcons} from '@expo/vector-icons';
@@ -39,6 +38,7 @@ const AddBalanceScreen = ({ navigation }) => {
     if(!state.accountDetails.userName) return <Loader />
 
     return (
+        <>
         <View style={styles.container}>
             <View>
                 <Ionicons name="arrow-back" size={40} color={COLORS.primary} onPress={()=> navigation.navigate('Home')}/>
@@ -84,6 +84,7 @@ const AddBalanceScreen = ({ navigation }) => {
                 />
             </View>
         </View>
+        </>
     )
 }
 
