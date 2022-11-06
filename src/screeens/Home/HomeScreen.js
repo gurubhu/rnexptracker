@@ -12,6 +12,7 @@ import { FontAwesome, Octicons} from '@expo/vector-icons';
 import HomeHeader from '../../components/HomeHeader';
 import Balance from '../../components/Balance';
 import Loader from '../../components/Loader';
+import Categories from '../../components/Categories';
 
 import COLORS from '../../constants/COLORS';
 
@@ -55,6 +56,7 @@ const HomeScreen = ({ navigation}) => {
                             />
                 </View>
             </View>
+            <Categories />
         </ScrollView>
     )
 }
@@ -62,7 +64,7 @@ const HomeScreen = ({ navigation}) => {
 const styles = StyleSheet.create({
     container: { 
         flex : 1, 
-        paddingBottom : 130, 
+       // paddingBottom : 130, 
         backgroundColor: 'white'
     },
     shadow: {

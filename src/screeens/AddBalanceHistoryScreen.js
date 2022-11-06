@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import {
     StyleSheet,
-    ScrollView,
     View,
     Text,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+    SafeAreaView,
+    ScrollView
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -81,7 +82,7 @@ const AddBalanceHistoryScreen = ({ navigation })=>{
                 </View>
                 <Balance navigation={navigation} state={state} />
             </View>
-            {addBalanceHistory.length > 0 ? <View
+            {addBalanceHistory.length > 0 ? <SafeAreaView
                 style={{
                     marginVertical : SIZES.padding,
                     marginHorizontal : SIZES.padding,
@@ -109,7 +110,7 @@ const AddBalanceHistoryScreen = ({ navigation })=>{
                     )
                 }}
                 />
-            </View>: <Loader />}
+            </SafeAreaView >: <Loader />}
         </ScrollView>
     )
 }
