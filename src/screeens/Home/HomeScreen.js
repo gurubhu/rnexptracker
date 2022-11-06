@@ -55,8 +55,9 @@ const HomeScreen = ({ navigation}) => {
                                 }
                             />
                 </View>
+                <Categories />
             </View>
-            <Categories />
+            
         </ScrollView>
     )
 }
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     container: { 
         flex : 1, 
        // paddingBottom : 130, 
-        backgroundColor: 'white'
+        backgroundColor: COLORS.white
     },
     shadow: {
         shadowColor: "#000",

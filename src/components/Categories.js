@@ -1,31 +1,36 @@
 import React,{ useState } from 'react';
 import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
+import { FontAwesome} from '@expo/vector-icons';
 
 import SIZES from '../constants/SIZES';
 import COLORS from '../constants/COLORS';
 import FONTS from '../constants/FONTS';
 
-import Currency from './Currency';
+import Category from './Category';
 
 const trendingCurrencies = [
     {
         id: 1,
-        currency: "Monthly Expense",
+        title: "Monthly Expense",
+        description: 'Added to track monthly expense',
         amount: "29,455.74"
     },
     {
         id: 2,
-        currency: "Groceries",
+        title: "Groceries",
+        description: 'Added to track groceries expense',
         amount: "919.03"
     },
     {
         id: 3,
-        currency: "Electricity Bill",
+        title: "Electricity Bill",
+        description: 'Added to track electricity expense',
         amount: "118.33"
     },
     {
         id: 4,
-        currency: "Travelling",
+        title: "Travelling",
+        description: 'Added to track travelling expense',
         amount: "4567.33"
     }
 ]
@@ -35,17 +40,29 @@ const Categories = ()=>{
 
     const renderItem = ({item, index})=>(
         <TouchableOpacity style={{...styles.cardContainer, marginLeft: index === 0 ? SIZES.padding : 0}}>
-            <Currency item={item}/>
+            <Category item={item}/>
             {/* Value */}
-            <View style={{ marginTop : SIZES.radius }}>
-                <Text style={{...FONTS.h4, color : COLORS.dark, justifyContent:'center', alignItems: 'center'}}>{item.amount}</Text>
+            <View style={{ marginTop : SIZES.radius, marginLeft: SIZES.base * 5 }}>
+                <Text style={{...FONTS.h4, color : COLORS.secondary, justifyContent:'center', alignItems: 'center'}}>
+                    <FontAwesome name="rupee" size={15} color={COLORS.secondary} />
+                    <View style={{ width : 5 }}></View>
+                     {item.amount}
+                </Text>
             </View>
         </TouchableOpacity>
     )
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Categories</Text>
+            <View style={{flexDirection: 'row',justifyContent: 'space-between', marginRight: SIZES.padding}}>
+                <Text style={styles.text}>Categories</Text>
+                <FontAwesome 
+                    name="plus-circle" 
+                    size={25} color={COLORS.primary} 
+                    onPress={()=> navigation.navigate('AddCategory')} 
+                    style={{ marginLeft : 10}}
+                />
+            </View>
             <FlatList 
                 contentContainerStyle={styles.list}
                 data={category}
@@ -75,8 +92,10 @@ const styles = StyleSheet.create({
         paddingVertical: SIZES.padding,
         paddingHorizontal : SIZES.padding,
         marginRight: SIZES.radius,
-        borderRadius: 10,
-        backgroundColor:COLORS.secondary60
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor : COLORS.dark20,
+        backgroundColor:COLORS.white
     }
 });
 

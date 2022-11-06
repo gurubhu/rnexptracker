@@ -1,21 +1,23 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons,AntDesign  } from '@expo/vector-icons';
 
 
 import SIZES from '../constants/SIZES';
 import COLORS from '../constants/COLORS';
 import FONTS from '../constants/FONTS';
 
-const Currency = ({item})=>{
+const Category = ({item})=>{
     return(
         <View style={styles.container}>
                 <View>
-                    <MaterialIcons name="category" size={20} color={COLORS.primary} />
+                {/* <AntDesign name="disconnect" size={25} color={COLORS.primary}/> */}
+                <AntDesign name="bank" size={30} color={COLORS.primary} />
                 </View>
                 <View style={styles.textContainer}>
-                        <Text style={styles.currency}>{item.currency}</Text>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.description}>{item.description}</Text>
                 </View>
         </View>
     )
@@ -33,9 +35,15 @@ const styles = StyleSheet.create({
     textContainer:{ 
         marginLeft : SIZES.base
     },
-    currency:{
+    title:{
         ...FONTS.h4,
         color : COLORS.primary
+    },
+    description:{
+        ...FONTS.body5,
+        color : COLORS.dark60,
+        marginHorizontal: 10,
+        fontWeight: 'bold'
     },
     code:{ 
         color: COLORS.grey, 
@@ -43,4 +51,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Currency;
+export default Category;
