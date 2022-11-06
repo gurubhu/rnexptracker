@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import * as Font from 'expo-font';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 
 import AccountScreen from './src/screeens/AccountScreen';
-import SigninScreen from './src/screeens/SigninScreen';
-import SignupScreen from './src/screeens/SignupScreen';
-import TrackCreateScreen from './src/screeens/TrackCreateScreen';
-import TrackDetailScreen from './src/screeens/TrackDetailScreen';
-import TrackListScreen from './src/screeens/TrackListScreen';
 import ResolveAuthScreen from './src/screeens/ResolveAuthScreen';
 
 import WelcomeScreen from './src/screeens/WelcomeScreen';
@@ -18,6 +11,7 @@ import WalkthroughScreen from './src/screeens/WalkthroughScreen';
 import AuthMainScreen from './src/screeens/Authentication/AuthMainScreen';
 import HomeScreen from './src/screeens/Home/HomeScreen';
 import AddBalanceScreen from './src/screeens/AddBalanceScreen';
+import AddBalanceHistoryScreen from './src/screeens/AddBalanceHistoryScreen';
 
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as AccountProvider } from './src/context/AccountContext';
@@ -72,7 +66,8 @@ const switchNavigator = createSwitchNavigator({
   AuthMain : AuthMainScreen,
   Home: HomeScreen,
   Account: AccountScreen,
-  AddBalance : AddBalanceScreen
+  AddBalance : AddBalanceScreen,
+  AddBalanceHistory: AddBalanceHistoryScreen
 })
 
 const App = createAppContainer(switchNavigator);

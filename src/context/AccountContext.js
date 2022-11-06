@@ -14,6 +14,8 @@ const accountReducer = (state, action)=>{
             return {...state, errorMessage : action.payload};
         case 'add_balance':
             return { accountDetails : action.payload, errorMessage : '' };
+        case 'get_balance':
+            return { ...state, addBalanceHistory: action.payload };
         default :
             return state;
     }
@@ -76,8 +78,31 @@ const addBalance = (dispatch) =>{
     }
 }
 
+const getBalance = (dispatch) =>{
+    return async ()=>{
+        try {
+            //if fetching account details is successful, modify our state
+            dispatch({ type: 'clear_account_details'})
+            const token = await AsyncStorage.getItem('token');
+            if(token){
+               const response = await trackerApi.get('/account',{
+                headers : {
+                    Authorization : `Bearer ${token}`
+                }
+               });
+
+               dispatch({ type: 'get_balance', payload : response.data })
+               //navigate('Home');
+            }
+       } catch (error) {
+        //console.log('AddBalance Error', error);
+        dispatch({ type: 'add_error'})
+       }
+    }
+}
+
 export const { Context, Provider} = createDataContext(
     accountReducer,  
-    { fetchAccountDetails, addError, addBalance }, 
+    { fetchAccountDetails, addError, addBalance, getBalance}, 
     { errorMessage: '', accountDetails : {} }
 );

@@ -47,7 +47,8 @@ const HomeScreen = ({ navigation}) => {
                                 }
                                 historyIcon={
                                     <Octicons name="history" 
-                                        size={25} color={COLORS.primary}  
+                                        size={25} color={COLORS.primary}
+                                        onPress={()=> navigation.navigate('AddBalanceHistory')} 
                                         style={{ marginLeft : 10}}
                                     />
                                 }

@@ -37,7 +37,7 @@ const Balance = ({ navigation, state, plusIcon, historyIcon })=>{
                 <Text style={styles.balance}>
                 <FontAwesome name="rupee" size={25} color={COLORS.secondary} />
                 <View style={{ width : 20 }}></View>
-                {total}
+                {total.toFixed(2)}
                 <View style={{ width : 20 }}></View>
                     {plusIcon} 
                 <View style={{ width : 20 }}></View>
