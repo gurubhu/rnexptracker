@@ -1,6 +1,9 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
 import { FontAwesome} from '@expo/vector-icons';
+
+import trackerApi from '../api/tracker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import SIZES from '../constants/SIZES';
 import COLORS from '../constants/COLORS';
@@ -35,8 +38,26 @@ const trendingCurrencies = [
     }
 ]
 
+
+
 const Categories = ()=>{
-    const [category, setCategory] = useState(trendingCurrencies);
+    const [category, setCategory] = useState([]);
+
+    const getCategories = async ()=>{
+        const token = await AsyncStorage.getItem('token');
+            if(token){
+                const response = await trackerApi.get('/category',{
+                    headers : {
+                        Authorization : `Bearer ${token}`
+                    }
+                });
+                setCategory(response.data);
+            }
+    }
+
+    useEffect(()=>{
+        getCategories();
+    },[]);
 
     const renderItem = ({item, index})=>(
         <TouchableOpacity style={{...styles.cardContainer, marginLeft: index === 0 ? SIZES.padding : 0}}>
@@ -67,7 +88,7 @@ const Categories = ()=>{
                 contentContainerStyle={styles.list}
                 data={category}
                 renderItem={renderItem}
-                keyExtractor={item => `${item.id}`}
+                keyExtractor={item => `${item._id}`}
                 horizontal
                 showsHorizontalScrollIndicator={false}
         />
