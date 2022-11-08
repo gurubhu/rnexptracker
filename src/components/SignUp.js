@@ -183,7 +183,7 @@ const SignUp = ()=>{
                         if(password !== confirmPassword) return addError('Password and Confirm Password are different');
                         if(!termsChecked) return addError('Please select Terms and Conditions.');
                         setIsCreateAccountButtonPressed(true);
-                        signup({name, email, password});
+                        signup({name, email, password, setIsCreateAccountButtonPressed });
                     }}
                 />
             </View>

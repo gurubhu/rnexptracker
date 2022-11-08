@@ -1,4 +1,4 @@
-import React,{ useState, useContext } from 'react';
+import React,{ useState, useContext, useEffect } from 'react';
 import {
     Text,
     StyleSheet,
@@ -28,6 +28,8 @@ const SignIn = ()=>{
     const [password, setPassword] = useState('')
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
     const [isLoginButtonPressed, setIsLoginButtonPressed] = useState(false);
+
+    //if(state.errorMessage) console.log('State',state);
 
     return(
         <View style={styles.container}>               
@@ -94,7 +96,7 @@ const SignIn = ()=>{
                         if(!validateEmail(email)) return addError('Invalid Email')
                         if(!password) return addError('Enter Your Password');
                         setIsLoginButtonPressed(true);
-                        signin({ email, password });
+                        signin({ email, password,  setIsLoginButtonPressed});
                     }}
                 />
             </View>

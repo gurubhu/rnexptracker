@@ -45,7 +45,7 @@ const clearErrorMessage = dispatch => ()=>{
 }
 
 const signup = dispatch =>{
-    return async ({ name, email, password })=>{
+    return async ({ name, email, password, setIsCreateAccountButtonPressed })=>{
 
         // make api request to sign up with email and password
         try {
@@ -63,6 +63,7 @@ const signup = dispatch =>{
             //console.log('SignUP Error2',error.response);
             // if sign up failed,we need to show error message
             //if(error.response.data)
+            setIsCreateAccountButtonPressed(false);
             dispatch({ type: 'add_error', payload : error.response.data.error })
             //console.log(error)
         }       
@@ -70,7 +71,7 @@ const signup = dispatch =>{
 }
 
 const signin = (dispatch) =>{
-    return async ({ email, password })=>{
+    return async ({ email, password,setIsLoginButtonPressed })=>{
         try {
             let userName='';
             //if sign up successful, modify our state and say that we are authenticated.
@@ -85,6 +86,7 @@ const signin = (dispatch) =>{
        } catch (error) {
            // if sign up failed,we need to show error message
           // if(error.response.data)
+           setIsLoginButtonPressed(false);
            dispatch({ type: 'add_error', payload : error.response.data.error })
            //console.log(error)
        }  
