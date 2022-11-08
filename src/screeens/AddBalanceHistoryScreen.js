@@ -12,7 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import trackerApi from '../api/tracker';
 
-import { Ionicons, AntDesign,FontAwesome  } from '@expo/vector-icons';
+import { AntDesign,FontAwesome  } from '@expo/vector-icons';
 
 import Balance from '../components/Balance';
 import Loader from '../components/Loader';
@@ -23,7 +23,6 @@ import SIZES from '../constants/SIZES';
 import FONTS from '../constants/FONTS';
 
 import { Context as AccountContext} from '../context/AccountContext';
-import { add } from 'react-native-reanimated';
 
 
 const AddBalanceHistoryScreen = ({ navigation })=>{

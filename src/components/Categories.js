@@ -10,35 +10,7 @@ import COLORS from '../constants/COLORS';
 import FONTS from '../constants/FONTS';
 
 import Category from './Category';
-
-const trendingCurrencies = [
-    {
-        id: 1,
-        title: "Monthly Expense",
-        description: 'Added to track monthly expense',
-        amount: "29,455.74"
-    },
-    {
-        id: 2,
-        title: "Groceries",
-        description: 'Added to track groceries expense',
-        amount: "919.03"
-    },
-    {
-        id: 3,
-        title: "Electricity Bill",
-        description: 'Added to track electricity expense',
-        amount: "118.33"
-    },
-    {
-        id: 4,
-        title: "Travelling",
-        description: 'Added to track travelling expense',
-        amount: "4567.33"
-    }
-]
-
-
+import Loader from './Loader';
 
 const Categories = ()=>{
     const [category, setCategory] = useState([]);
@@ -72,6 +44,8 @@ const Categories = ()=>{
             </View>
         </TouchableOpacity>
     )
+    
+    if(category.length === 0) return <Loader />
 
     return(
         <View style={styles.container}>
@@ -80,7 +54,7 @@ const Categories = ()=>{
                 <FontAwesome 
                     name="plus-circle" 
                     size={25} color={COLORS.primary} 
-                    onPress={()=> navigation.navigate('AddCategory')} 
+                    onPress={()=> console.log('AddCategory')} 
                     style={{ marginLeft : 10}}
                 />
             </View>
