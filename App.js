@@ -17,6 +17,7 @@ import { Provider as AuthProvider } from './src/context/AuthContext';
 import { Provider as AccountProvider } from './src/context/AccountContext';
 
 import { setNavigator } from './src/navigation/NavigationRef';
+import EditBalanceScreen from './src/screeens/EditBalanceScreen';
 
 
 // const switchNavigator = createSwitchNavigator({
@@ -67,6 +68,7 @@ const switchNavigator = createSwitchNavigator({
   Home: HomeScreen,
   Account: AccountScreen,
   AddBalance : AddBalanceScreen,
+  EditBalance: EditBalanceScreen,
   AddBalanceHistory: AddBalanceHistoryScreen
 })
 

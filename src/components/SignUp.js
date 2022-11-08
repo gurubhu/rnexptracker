@@ -30,7 +30,8 @@ const SignUp = ()=>{
     const [confirmPassword, setConfirmPassword] = useState("")
     const [termsChecked, setTermsChecked] = useState(false)
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
-    const [name, setName] = useState("")
+    const [name, setName] = useState("");
+    const [isCreateAccountButtonPressed, setIsCreateAccountButtonPressed] = useState(false);
 
     return(
         <View style={{
@@ -172,7 +173,7 @@ const SignUp = ()=>{
                     labelStyle={{
                         ...FONTS.h3
                     }}
-
+                    disabled={isCreateAccountButtonPressed}
                     onPress={()=> {
                         if(!name) return addError('Enter Your Name');
                         if(!email) return addError('Enter Your Email');
@@ -181,6 +182,7 @@ const SignUp = ()=>{
                         if(!confirmPassword) return addError('Enter Confirm Password');
                         if(password !== confirmPassword) return addError('Password and Confirm Password are different');
                         if(!termsChecked) return addError('Please select Terms and Conditions.');
+                        setIsCreateAccountButtonPressed(true);
                         signup({name, email, password});
                     }}
                 />

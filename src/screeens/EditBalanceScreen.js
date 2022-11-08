@@ -5,13 +5,14 @@ import {
     StyleSheet
 } from 'react-native';
 
+import BackArrow from '../components/BackArrow';
+
 import { Ionicons } from '@expo/vector-icons';
 
 import Loader from '../components/Loader';
 import Balance from '../components/Balance';
 import FormInput from '../components/FormInput';
 import TextButton from '../components/TextButton';
-import BackArrow from '../components/BackArrow';
 
 import COLORS from '../constants/COLORS';
 import SIZES from '../constants/SIZES';
@@ -21,25 +22,16 @@ import { Context as AccountContext} from '../context/AccountContext';
 import { FontAwesome, MaterialIcons} from '@expo/vector-icons';
 
 
+const EditBalanceScreen = ({ navigation }) => {
 
-const AddBalanceScreen = ({ navigation }) => {
-
-    const { fetchAccountDetails, state, addError, addBalance } = useContext(AccountContext);
-    
+    const { state} = useContext(AccountContext);
 
     const [amount, setAmount] = useState(0);
-    const [description, setDescription] = useState('')
 
-    useEffect(()=>{
-        fetchAccountDetails();
-    },[]);
-
-    if(!state.accountDetails.userName) return <Loader />
 
     return (
-        <>
         <View style={styles.container}>
-            <BackArrow navigation={navigation} navigationText="Home"/>
+            <BackArrow navigation={navigation} navigationText="AddBalanceHistory"/>
             <Balance navigation={navigation} state={state} />
             <View style={{...styles.authContainer,...styles.shadow}}>
                 { 
@@ -58,30 +50,8 @@ const AddBalanceScreen = ({ navigation }) => {
                         }
                         keyboardType="decimal-pad"
                 />
-                <FormInput 
-                        containerStyle={styles.amountContainerStyle}
-                        placeholder="Enter Short Description"
-                        value={description}
-                        onChange={setDescription}
-                        prependComponent={
-                            <View style={{marginRight : SIZES.base}}>
-                                <MaterialIcons name="description" size={25} color={COLORS.secondary} />
-                            </View>
-                        }
-                />
-                <TextButton 
-                    label="Add Balance"
-                    contentContainerStyle={styles.loginContainerStyle}
-                    labelStyle={styles.loginLabelStyle}
-                    onPress={()=>{
-                        if(!amount) return addError('Enter Amount');
-                        if(!description) return addError('Enter Description');
-                        addBalance({ amount, description });
-                    }}
-                />
             </View>
         </View>
-        </>
     )
 }
 
@@ -110,49 +80,12 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 8,
     },
-    balance:{
-        lineHeight : 45,
-        color : COLORS.dark,
-        ...FONTS.h2
-    },
-    balanceContainer :{
-        marginBottom : SIZES.padding
-    },
-    emailImage:{
-        width : 25,
-        height : 25,
-        marginRight : SIZES.base
-    },
-    loginContainerStyle:{
-        height: 55,
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.primary,
-        marginTop : 125
-    },
-    loginLabelStyle:{
-        ...FONTS.h3
-    },
     amountContainerStyle:{
         marginTop: SIZES.radius,
         borderRadius : SIZES.radius,
         backgroundColor: COLORS.error
     },
-    descContainerStyle : {
-        marginTop: SIZES.radius,
-        borderRadius : SIZES.radius,
-        //backgroundColor: COLORS.error,
-        height : 135
-    },
-    textinput:{
-        flex : 1,
-        paddingVertical : 0,
-        ...FONTS.body3
-    },
-    error:{
-        ...FONTS.body3,
-        color : COLORS.error,
-        marginVertical: SIZES.radius
-    }
-})
+});
 
-export default AddBalanceScreen;
+export default EditBalanceScreen;
+

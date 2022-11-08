@@ -27,6 +27,7 @@ const SignIn = ()=>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+    const [isLoginButtonPressed, setIsLoginButtonPressed] = useState(false);
 
     return(
         <View style={styles.container}>               
@@ -87,10 +88,12 @@ const SignIn = ()=>{
                     label="Log In"
                     contentContainerStyle={styles.loginContainerStyle}
                     labelStyle={styles.loginLabelStyle}
+                    disabled={isLoginButtonPressed}
                     onPress={()=>{
                         if(!email) return addError('Enter Your Email');
                         if(!validateEmail(email)) return addError('Invalid Email')
                         if(!password) return addError('Enter Your Password');
+                        setIsLoginButtonPressed(true);
                         signin({ email, password });
                     }}
                 />
@@ -152,8 +155,7 @@ const styles = StyleSheet.create({
     },
     loginContainerStyle:{
         height: 55,
-        borderRadius: SIZES.radius,
-        backgroundColor: COLORS.primary
+        borderRadius: SIZES.radius
     },
     loginLabelStyle:{
         ...FONTS.h3
